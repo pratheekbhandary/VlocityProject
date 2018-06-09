@@ -1,4 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<div>FaceGram</div>, document.querySelector('.container'));
+import App from './components/App';
+
+ReactDOM.render(<App/>, document.querySelector('.container'));
