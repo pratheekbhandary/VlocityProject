@@ -5,7 +5,7 @@ import {Table} from 'react-bootstrap/lib';
 
 const TableRow = ({index, like, dislike}) => (
     <tr>
-    <td>{index}</td>
+    <td>{index+1}</td>
     <td>{like}</td>
     <td>{dislike}</td>
     </tr>

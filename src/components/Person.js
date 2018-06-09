@@ -2,22 +2,48 @@ import React from "react";
 import { Component } from "react";
 
 import LikesDislikesTable from './LikesDislikesTable';
-import {Carousel} from 'react-bootstrap/lib';
+import RatingHearts from './RatingHearts';
+import {Carousel, Grid, Row, Col, Media, Button} from 'react-bootstrap/lib';
 
 export default class Person extends Component {
 
   render() {
-    debugger;
     const {name,rating,img,Description,Likes,Dislikes}=this.props.person;
     return (
-      <Carousel.Item key={this.props.key}>
-      <img width={900} height={900} alt="900x900" src={img} />
-      <Carousel.Caption>
-        <h3>First slide label</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </Carousel.Caption>
-      <LikesDislikesTable likes={Likes} dislikes={Dislikes}/>
-    </Carousel.Item>
+      <div>
+      <Grid bsClass="">
+      <Row bsClass="" className="show-grid">
+            <div className="col-md-1"></div>
+            <div className="col-md-10">
+              <Media>
+                <Media.Left align="middle">
+                  <img width={200} height={200} alt="200x200" src={img} />
+                </Media.Left>
+                <Media.Body align="middle">
+                    <Button bsStyle="primary" bsSize="large"> SEND MESSAGE! </Button>
+                    <RatingHearts rating={rating}/>
+                </Media.Body>
+              </Media>
+              <br/>
+                  <Row bsClass="" className="show-grid">
+                    <Col bsClass="" md={4}>
+                    </Col>
+                  </Row>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                    {Description}
+                    </div>
+                  </div>                    
+                  <Row bsClass="" className="show-grid">
+                    <Col bsClass="" md={6}>
+                      <LikesDislikesTable likes={Likes} dislikes={Dislikes}/>
+                    </Col>
+                  </Row>
+                  </div><div className="col-md-1"></div>
+               </Row>
+                </Grid>
+
+      </div>
     );
   }
 }

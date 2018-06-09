@@ -12,14 +12,13 @@ export default class ControlledCarousel extends React.Component {
       this.handleSelect = this.handleSelect.bind(this);
   
       this.state = {
-        index: 0,
         direction: null
       };
     }
   
     handleSelect(selectedIndex, e) {
+      this.props.changePerson(selectedIndex);
       this.setState({
-        index: selectedIndex,
         direction: e.direction
       });
     }
@@ -27,12 +26,8 @@ export default class ControlledCarousel extends React.Component {
     getPerson=(people)=>{
       let tbody=[];
       tbody=people.map((person,index)=>{
-        const {name,rating,img,Description,Likes,Dislikes}=person;
         return <Carousel.Item key={index}>
-        <div width={900} height={900}>
-        <img width={200} height={200} alt="900x900" src={img} />
-        </div>
-        <LikesDislikesTable likes={Likes} dislikes={Dislikes}/>
+        <Person person={person}/>
         <Carousel.Caption>
         </Carousel.Caption>
       </Carousel.Item>
@@ -41,7 +36,7 @@ export default class ControlledCarousel extends React.Component {
     }
 
     render() {
-      const { index, direction } = this.state;
+      const { direction } = this.state;
   
       return (
         <Carousel

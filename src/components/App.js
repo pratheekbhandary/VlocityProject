@@ -28,13 +28,13 @@ export default class App extends Component {
             <PageHeader/>
             <Grid>
                 <Row className="show-grid">
-                <Col md={4}>
-                        {'  '}
+                    <Col md={4}>
+                            {'  '}
                     </Col>
                     <Col md={8}>
                         <ControlledCarousel people={people} changePerson={this.changePerson} 
                         selectedPerson={this.state.selectedPerson}/>
-                </Col>
+                    </Col>
                 </Row>
             </Grid>
         </div>
