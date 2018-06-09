@@ -1,5 +1,5 @@
-{
-  "People": [
+export default 
+  [
     {
       "name": "Andrew Amernante",
       "rating": 3,
@@ -85,5 +85,4 @@
         "Dead Batteries"
       ]
     }
-  ]
-}
+  ];
