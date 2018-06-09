@@ -10,7 +10,7 @@ export default class Person extends Component {
   render() {
     const {name,rating,img,Description,Likes,Dislikes}=this.props.person;
     return (
-      <div>
+      <div><br/>
       <Grid bsClass="">
       <Row bsClass="" className="show-grid">
             <div className="col-md-1"></div>
@@ -20,6 +20,7 @@ export default class Person extends Component {
                   <img width={200} height={200} alt="200x200" src={img} />
                 </Media.Left>
                 <Media.Body align="middle">
+                    <div>{name}</div>
                     <Button bsStyle="primary" bsSize="large"> SEND MESSAGE! </Button>
                     <RatingHearts rating={rating}/>
                 </Media.Body>
@@ -29,8 +30,8 @@ export default class Person extends Component {
                     <Col bsClass="" md={4}>
                     </Col>
                   </Row>
-                  <div class="panel panel-default">
-                    <div class="panel-body">
+                  <div className="panel panel-default">
+                    <div className="panel-body">
                     {Description}
                     </div>
                   </div>                    

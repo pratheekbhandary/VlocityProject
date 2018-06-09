@@ -21,7 +21,11 @@ export default class PageHeader extends Component {
                     <Navbar.Form>
                     <FormGroup>
                         <InputGroup>
-                        <FormControl type="text" />
+                        <FormControl 
+                        onChange={this.props.searchFieldChange}
+                        placeholder='Search'
+                        type="text"
+                        value={this.props.searchText} />
                         <InputGroup.Addon>
                             <Glyphicon glyph="glyphicon glyphicon-remove-sign" />
                         </InputGroup.Addon>

@@ -8,7 +8,7 @@ export default class RatingHearts extends Component {
     getHeart(count){
         let stars=[];
         for (var i = 0; i < count; i++) {
-            stars.push(<Glyphicon glyph="glyphicon glyphicon-heart" />);
+            stars.push(<Glyphicon key={i} glyph="glyphicon glyphicon-heart" />);
         }
         return stars;
     }
