@@ -41,9 +41,7 @@ export default class PageHeader extends Component {
                         <NavItem eventKey={1} href="#">
                             {this.props.loggedInUser.name}
                         </NavItem>
-                        <NavItem eventKey={2} href="#">
-                        <img width={50} height={50} alt="25x25" src={img} />
-                        </NavItem>
+                        <img width={50} height={50} alt="40x40" src={this.props.loggedInUser.img} />
                         </Nav>
                     </Col>
                 </Row>

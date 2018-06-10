@@ -34,8 +34,10 @@ export default class App extends Component {
       }
 
       clearSearch(){
-        this.setState({searchText:''});
-        this.setState({searchedPeople:people,selectedPerson:0});
+        if(this.state.searchText!==''){
+            this.setState({searchText:''});
+            this.setState({searchedPeople:people,selectedPerson:0});
+        }  
       }
 
       changePerson(i){
