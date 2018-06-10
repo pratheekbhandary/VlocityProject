@@ -1,7 +1,8 @@
 import React from "react";
 import { Component } from "react";
 
-import {Navbar, FormGroup, FormControl, Button, Glyphicon, InputGroup, Nav, NavItem, Grid, Row, Col} from 'react-bootstrap/lib';
+import {Navbar, FormGroup, FormControl, Button, 
+    Glyphicon, InputGroup, Nav, NavItem, Grid, Row, Col, img} from 'react-bootstrap/lib';
 
 export default class PageHeader extends Component {
   render() {
@@ -27,7 +28,7 @@ export default class PageHeader extends Component {
                         type="text"
                         value={this.props.searchText} />
                         <InputGroup.Addon>
-                            <Glyphicon glyph="glyphicon glyphicon-remove-sign" />
+                            <Glyphicon onClick={this.props.clearSearch} glyph="glyphicon glyphicon-remove-sign" />
                         </InputGroup.Addon>
                         </InputGroup>
                     </FormGroup>{' '}
@@ -38,10 +39,10 @@ export default class PageHeader extends Component {
                     <Col xs={12} md={4}>
                             <Nav pullRight>
                         <NavItem eventKey={1} href="#">
-                            Link Right
+                            {this.props.loggedInUser.name}
                         </NavItem>
                         <NavItem eventKey={2} href="#">
-                            Link Right
+                        <img width={50} height={50} alt="25x25" src={img} />
                         </NavItem>
                         </Nav>
                     </Col>

@@ -4,7 +4,7 @@ import { Component } from "react";
 import PageHeader from './PageHeader';
 import ControlledCarousel from './ControlledCarousel';
 import PeopleList from './PeopleList';
-import {Grid, Row, Col} from 'react-bootstrap/lib';
+import {Grid, Row, Col, Alert} from 'react-bootstrap/lib';
 import people from '../people_(5)';
 
 
@@ -15,8 +15,10 @@ export default class App extends Component {
         super(props, context);
         this.changePerson = this.changePerson.bind(this);
         this.searchFieldChange = this.searchFieldChange.bind(this);
+        this.clearSearch = this.clearSearch.bind(this);
 
         this.state = {
+            loggedInUser:people[0],
           selectedPerson: 0,
           searchText:'',
           searchedPeople:people
@@ -24,12 +26,16 @@ export default class App extends Component {
       }
 
       searchFieldChange(e){
-          debugger;
         this.setState({searchText:e.target.value});
         let searchedPeople=people.filter((person)=>{
             return person.name.toLowerCase().indexOf(e.target.value.toLowerCase())!==-1;
         });
         this.setState({searchedPeople,selectedPerson:0});
+      }
+
+      clearSearch(){
+        this.setState({searchText:''});
+        this.setState({searchedPeople:people,selectedPerson:0});
       }
 
       changePerson(i){
@@ -41,19 +47,26 @@ export default class App extends Component {
   render() {
     return (
         <div>
-            <PageHeader searchFieldChange={this.searchFieldChange} searchText={this.state.searchText}/>
-            <Grid>
-                <Row className="show-grid">
-                    <Col md={4}>
-                            <PeopleList people={this.state.searchedPeople} changePerson={this.changePerson} 
-                        selectedPerson={this.state.selectedPerson}/>
-                    </Col>
-                    <Col md={8}>
-                        <ControlledCarousel people={this.state.searchedPeople} changePerson={this.changePerson} 
-                        selectedPerson={this.state.selectedPerson}/>
-                    </Col>
-                </Row>
-            </Grid>
+            <PageHeader searchFieldChange={this.searchFieldChange} searchText={this.state.searchText}
+            clearSearch={this.clearSearch} loggedInUser={this.state.loggedInUser}/>
+            
+                       <Grid>
+                       {this.state.searchedPeople.length>0 &&
+                        <Row className="show-grid">
+                            <Col md={4}>
+                                    <PeopleList people={this.state.searchedPeople} changePerson={this.changePerson} 
+                                selectedPerson={this.state.selectedPerson}/>
+                            </Col>
+                            <Col md={8}>
+                                <ControlledCarousel people={this.state.searchedPeople} changePerson={this.changePerson} 
+                                selectedPerson={this.state.selectedPerson}/>
+                            </Col>
+                        </Row>}
+                        {this.state.searchedPeople.length==0 && 
+                        <Alert bsStyle="danger">
+                        <center> oh oh!&nbsp; <strong>Please Enter Correct Search Query</strong></center></Alert>}
+                    </Grid>
+            
         </div>
     );
   }
